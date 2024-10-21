@@ -20,7 +20,9 @@ public class Ejercicios {
         //ejercicio10();
         //ejercicio11();
         //ejercicio12();
-        ejercicio13();
+        //ejercicio13();
+        //ejercicio15();
+        ejercicio16();
     }
     public static void ejercicio1(){
         System.out.println("Introduce cuantos numeros quieres introducir");
@@ -197,14 +199,45 @@ public class Ejercicios {
     }
     public static void  ejercicio13(){
         System.out.println("Introduce una palabra: ");
-        String palabra = lectorTeclado.next();
+        String palabra = lectorTeclado.next().toLowerCase();
         String letra = "";
 
         for (int i = palabra.length() -1; i >= 0; i--) {
             letra += palabra.charAt(i);
         }
         System.out.println("Palabra inversa es: "+letra);
+        boolean palabraIgual = palabra.equals(letra);
+        System.out.println(palabraIgual);
+    }
+    public static void ejercicio15(){
+        int numero = random.nextInt(1,30);
+        int intentos = 0;
+        boolean ganador=false;
+        for (int i=0;i<10;i++){
 
+            System.out.println("Adivina el numero desde 1 hasta 30:");
+            int numeroUsuario = lectorTeclado.nextInt();
+            intentos++;
+            if (numeroUsuario == numero) {
+                System.out.println("Has adivinado con:"+intentos+" intentos");
+                ganador=true;
+                break;
+            }
+        }
+        if (!ganador){
+            System.out.println("Lo siento, has agotado todos los intentos");
+        }
+
+    }
+    public static void ejercicio16(){
+        System.out.println("Intruduce un numero entre 1 y 20:");
+        int numero = lectorTeclado.nextInt();
+        int suma = 1;
+
+        for (int i=0; i<numero; i++){
+            suma += suma *i;
+        }
+        System.out.println(suma);
     }
 
 }
