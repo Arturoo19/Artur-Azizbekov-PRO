@@ -39,31 +39,23 @@ public class GarajeHash {
         System.out.println("Escribe la matricula de coche que qieres eliminar:");
         String cocheEliminar = scanner.next();
 
-        Enumeration<Object[]> coches = listaCoches.elements();
-        while (coches.hasMoreElements()){
-            Object[] coche = coches.nextElement();
-            getCoches(coche[3].toString());
-            if (coche[3].toString().equals(cocheEliminar)){
-                System.out.println("Ya existe un coche con esta matrícula: " + cocheEliminar);
-                return;
-            }
+        if (listaCoches.remove(cocheEliminar) != null){
+            System.out.println("Coche eliminado correctamente");
+        } else {
+            System.out.println("No se encotro ningun coche con la matricula:"+cocheEliminar);
         }
+
     }
     public void buscarCoche(){
         System.out.println("Escribe la matricula de coche que quieres encotrar:");
         String cocheBuscar = scanner.next();
-        boolean encotrar = false;
+        Object[] coche = listaCoches.get(cocheBuscar);
 
-        Enumeration<Object[]> coches = listaCoches.elements();
-        while (coches.hasMoreElements()){
-            Object[] coche = coches.nextElement();
-            if (coche[3].toString().equals(cocheBuscar)){
-                System.out.println("Tu coche encontrado");
-                System.out.println("Marca:"+coche[0]+" Modelo:"+coche[1]+" Coste reparacion:"+coche[2]+" Matricula:"+coche[3]);
-                encotrar = true;
-            }
+        if (coche != null){
+            System.out.println("Coche encotrado:");
+            System.out.println("Matricula:"+coche[3]+"Marca:"+coche[0]);
         }
-        
+
     }
 
     public void modificarCoche(String matricula){
@@ -95,6 +87,18 @@ public class GarajeHash {
         while (costes.hasMoreElements()){
             Object[] coste = costes.nextElement();
             System.out.println("Matricula: "+coste[3]+", Coste de reparacion:"+coste[2]);
+        }
+    }
+    public void listarCoches(){
+        if (listaCoches.isEmpty()){
+            System.out.println("No hay coches");
+            return;
+        }
+        System.out.println("Lista de coches:");
+        Enumeration<Object[]> coches = listaCoches.elements();
+        while (coches.hasMoreElements()){
+            Object[] coche = coches.nextElement();
+            System.out.println("Matricula:"+coche[3]+"Marca:"+coche[0]+"Modelo:"+coche[1]+"Coste reparacion:"+coche[2]);
         }
     }
 

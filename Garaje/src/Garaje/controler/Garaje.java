@@ -30,7 +30,7 @@ public class Garaje {
             System.out.println(coche[0]+" - "+coche[1]+" - "+coche[3]);
         }
         if (listaCoches.isEmpty()){
-            System.out.println("Garaje.controler.Garaje esta vacio");
+            System.out.println("Garaje esta vacio");
         }
     }
     public void  mostrarCostes(){

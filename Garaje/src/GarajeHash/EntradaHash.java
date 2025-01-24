@@ -23,10 +23,10 @@ public class EntradaHash {
                     garaje.agregarCoche();
                     break;
                 case 2:
-
+                    garaje.listarCoches();
                     break;
                 case 3:
-
+                    garaje.buscarCoche();
                     break;
                 case 4:
                     garaje.mostrarCostes();

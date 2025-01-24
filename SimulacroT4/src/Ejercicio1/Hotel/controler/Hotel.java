@@ -1,4 +1,4 @@
-package Ejercicio1.controler;
+package Ejercicio1.Hotel.controler;
 
 import java.util.*;
 
