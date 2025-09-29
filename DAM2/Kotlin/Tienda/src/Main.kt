@@ -1,8 +1,11 @@
+import model.Categoria
+import model.Cliente
 import model.Tienda
+import java.lang.ref.Cleaner
 
 fun main() {
 
-    var camiseta: Producto = Producto(id = 1, precio = 14.99)
+    var camiseta: Producto = Producto(id = 1, precio = 14.99, categoria = Categoria.Ropa)
     var zapatillas: Producto = Producto(2,20.0)
     var pantalones = Producto(3,30.0,"Pantalones")
     var gorra = Producto(4,20.0, descripcion = "Gorra molona")
@@ -39,8 +42,12 @@ fun main() {
     tienda.almacen = listaProductos
 
     //tienda.agregarElemento(pantalones)
-    tienda.mostarDatosAlmacen()
-
+    //tienda.mostarDatosAlmacen()
+    //tienda.buscarProductosCategoria(Categoria.Ropa)
+    var cliente:Cliente = Cliente(1,"Artur")
+    cliente.agregarProductoCarrito(gorra)
+    cliente.mostrarCarrito()
+    cliente.buscarProducto(0)
 
 
 

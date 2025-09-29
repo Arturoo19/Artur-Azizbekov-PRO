@@ -42,7 +42,11 @@ class Tienda(var nombre: String) {
         println("El id no esta en la lista")
     }
     fun buscarProductosCategoria(categoria: Categoria){
+        val filtro: ArrayList<Producto?> = almacen.filter {
+            return@filter it?.categoria == categoria
+        } as ArrayList<Producto?>
 
+        println("El numero de elementos resultantes es ${filtro.size}")
     }
 
     fun buscarProductoID(id: Int): Unit {
