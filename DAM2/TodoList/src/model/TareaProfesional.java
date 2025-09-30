@@ -5,6 +5,7 @@ import java.util.Date;
 public class TareaProfesional extends Tarea{
 
     private Date fechaLimite;
+    private double presupuesto;
 
     /*@Override
     public void enviarRecordatorio(){
@@ -18,10 +19,10 @@ public class TareaProfesional extends Tarea{
 
     public TareaProfesional(){}
 
-    public TareaProfesional(int id,String titulo, String descripcion, int numeroPersonas, Prioridad prioridad, Date fechaLimite) {
+    public TareaProfesional(int id,String titulo, String descripcion, int numeroPersonas, Prioridad prioridad, Date fechaLimite, int presupuesto) {
         super(id,titulo, descripcion, numeroPersonas,prioridad);
-
         this.fechaLimite = fechaLimite;
+        this.presupuesto = presupuesto;
     }
 
 
@@ -41,5 +42,11 @@ public class TareaProfesional extends Tarea{
                 '}';
     }
 
+    public double getPresupuesto() {
+        return presupuesto;
+    }
 
+    public void setPresupuesto(double presupuesto) {
+        this.presupuesto = presupuesto;
+    }
 }

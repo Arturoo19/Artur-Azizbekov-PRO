@@ -15,7 +15,7 @@ public class Tarea {
     private Persona[] encargados;
     private ArrayList<Encargo> listaTareas;
     private ArrayList<Tarea> tareas;
-    private static Scanner scanner;
+    private static Scanner scanner = new Scanner(System.in);
 
 
 
@@ -212,8 +212,10 @@ public class Tarea {
                 System.out.println("Introduce prioridad (BAJA, MEDIA, ALTA): ");
                 Prioridad prioridad = Prioridad.valueOf(scanner.next().toUpperCase());
                 Date date = new Date();
+                System.out.println("introduce presupuesto:");
+                int presupuesto = scanner.nextInt();
 
-                nuevaTarea = new TareaProfesional(id, titulo, descripcion, numPersonas, prioridad, date);
+                nuevaTarea = new TareaProfesional(id, titulo, descripcion, numPersonas, prioridad, date,presupuesto);
 
                 System.out.println("Quiere añadir responsables ahora? (1.Si/2.No): ");
                 int opcionResponsables = scanner.nextInt();
@@ -249,9 +251,9 @@ public class Tarea {
                 System.out.println("Introduce ubicacion: ");
                 String ubicacion = scanner.next();
                 System.out.println("Introduce presupuesto: ");
-                double presupuesto = scanner.nextDouble();
 
-                nuevaTarea = new TareaPersonal(idPers, tituloPers, descripcionPers, numPersonasPers, prioridadPers, ubicacion, presupuesto);
+
+                nuevaTarea = new TareaPersonal(idPers, tituloPers, descripcionPers, numPersonasPers, prioridadPers, ubicacion);
 
                 System.out.println("Quiere añadir responsables ahora? (1.Si/2.No): ");
                 int opcionResponsables = scanner.nextInt();
@@ -304,82 +306,181 @@ public class Tarea {
             }
         }
     }
-    public void modificarTarea(int id){
-        if (estaTarea(id)!=null){
+    public void modificarTarea(int id) {
+        if (estaTarea(id) != null) {
             Tarea tarea = estaTarea(id);
-            int opcion;
+            int opcionTarea;
+
             do {
                 System.out.println("\n--- Menu de modificacion ---");
-                System.out.println("1. Cambiar titulo");
-                System.out.println("2. Cambiar descripcion");
-                System.out.println("3. Cambiar prioridad");
-                System.out.println("4. Añadir responsable");
-                System.out.println("5. Eliminar responsable");
-                System.out.println("6. Añadir subtarea");
-                System.out.println("7. Eliminar subtarea");
+                System.out.println("1. Modificar tarea Profesional");
+                System.out.println("2. Modificar tarea Personal");
                 System.out.println("0. Volver");
                 System.out.print("Elige opcion: ");
-                opcion = scanner.nextInt();
-                switch (opcion){
-                    case 1->{
-                        System.out.println("Escribe nuevo titulo:");
-                        String nuevoTitulo = scanner.next();
-                        tarea.setTitulo(nuevoTitulo);
-                        System.out.println("Titulo actualizado.");
-                    }
-                    case 2->{
-                        System.out.println("Escribe nueva descripcion:");
-                        String nuevaDescripcion= scanner.next();
-                        tarea.setDescripcion(nuevaDescripcion);
-                        System.out.println("Descripcion actualizado");
-                    }
-                    case 3->{
-                        System.out.println("Escribe nueva prioridad BAJA,MEDIA,ALTA:");
-                        Prioridad prioridad = Prioridad.valueOf(scanner.next().toUpperCase());
-                        tarea.setPrioritario(prioridad);
-                        System.out.println("Prioridad actualizada.");
-                    }
-                    case 4->{
-                        System.out.println("Introduce dni: ");
-                        String dni = scanner.next();
-                        System.out.println("Introduce nombre: ");
-                        String nombre = scanner.next();
-                        System.out.println("Introduce apellido: ");
-                        String apellido = scanner.next();
-                        System.out.println("Introduce edad: ");
-                        int edad = scanner.nextInt();
+                opcionTarea = scanner.nextInt();
 
-                        tarea.asignarResponsable(new Persona(dni, nombre, apellido, edad));
-                    }
-                    case 5->{
-                        System.out.println("Introduce dni del responsable:");
-                        String dniEliminar = scanner.next();
-                        tarea.eliminarResponsable(dniEliminar);
-                        System.out.println("Responsable eliminado");
-                    }
-                    case 6->{
-                        System.out.println("Introduce id de subtarea: ");
-                        int idSub = scanner.nextInt();
-                        System.out.println("Introduce descripcion de subtarea: ");
-                        String descSub = scanner.next();
+                switch (opcionTarea) {
+                    case 1 -> {
+                        if (!(tarea instanceof TareaProfesional tareaProfesional)) {
+                            System.out.println("La tarea con id " + id + " no es Profesional.");
+                            break;
+                        }
+                        int opcion;
+                        do {
+                            System.out.println("\n--- Modificacion Tarea Profesional ---");
+                            System.out.println("1. Cambiar titulo");
+                            System.out.println("2. Cambiar descripcion");
+                            System.out.println("3. Cambiar prioridad");
+                            System.out.println("4. Añadir responsable");
+                            System.out.println("5. Eliminar responsable");
+                            System.out.println("6. Añadir subtarea");
+                            System.out.println("7. Eliminar subtarea");
+                            System.out.println("8. Cambiar presupuesto");
+                            System.out.println("0. Volver");
+                            System.out.print("Elige opcion: ");
+                            opcion = scanner.nextInt();
 
-                        tarea.agregarEncargo(new Encargo(idSub, descSub));
+                            switch (opcion) {
+                                case 1 -> {
+                                    System.out.println("Escribe nuevo titulo:");
+                                    tareaProfesional.setTitulo(scanner.next());
+                                    System.out.println("Titulo actualizado.");
+                                }
+                                case 2 -> {
+                                    System.out.println("Escribe nueva descripcion:");
+                                    tareaProfesional.setDescripcion(scanner.next());
+                                    System.out.println("Descripcion actualizada.");
+                                }
+                                case 3 -> {
+                                    System.out.println("Escribe nueva prioridad BAJA,MEDIA,ALTA:");
+                                    Prioridad prioridad = Prioridad.valueOf(scanner.next().toUpperCase());
+                                    tareaProfesional.setPrioridad(prioridad);
+                                    System.out.println("Prioridad actualizada.");
+                                }
+                                case 4 -> {
+                                    System.out.println("Introduce dni: ");
+                                    String dni = scanner.next();
+                                    System.out.println("Introduce nombre: ");
+                                    String nombre = scanner.next();
+                                    System.out.println("Introduce apellido: ");
+                                    String apellido = scanner.next();
+                                    System.out.println("Introduce edad: ");
+                                    int edad = scanner.nextInt();
+                                    tareaProfesional.asignarResponsable(new Persona(dni, nombre, apellido, edad));
+                                }
+                                case 5 -> {
+                                    System.out.println("Introduce dni del responsable:");
+                                    tareaProfesional.eliminarResponsable(scanner.next());
+                                    System.out.println("Responsable eliminado.");
+                                }
+                                case 6 -> {
+                                    System.out.println("Introduce id de subtarea: ");
+                                    int idSub = scanner.nextInt();
+                                    System.out.println("Introduce descripcion de subtarea: ");
+                                    String descSub = scanner.next();
+                                    tareaProfesional.agregarEncargo(new Encargo(idSub, descSub));
+                                }
+                                case 7 -> {
+                                    System.out.println("Introduce id de la subtarea a eliminar: ");
+                                    tareaProfesional.borrarEncargo(scanner.nextInt());
+                                }
+                                case 8 -> {
+                                    System.out.println("Introduce nuevo presupuesto: ");
+                                    tareaProfesional.setPresupuesto(scanner.nextInt());
+                                    System.out.println("Presupuesto actualizado.");
+                                }
+                                case 0 -> System.out.println("Volviendo al menu principal...");
+                                default -> System.out.println("Opcion no valida.");
+                            }
+                        } while (opcion != 0);
                     }
-                    case 7->{
-                        System.out.println("Introduce id de la subtarea a eliminar: ");
-                        int idSubEliminar = scanner.nextInt();
-                        tarea.borrarEncargo(idSubEliminar);
+
+                    case 2 -> {
+                        if (!(tarea instanceof TareaPersonal tareaPersonal)) {
+                            System.out.println("La tarea con id " + id + " no es Personal.");
+                            break;
+                        }
+                        int opcion;
+                        do {
+                            System.out.println("\n--- Modificacion Tarea Personal ---");
+                            System.out.println("1. Cambiar titulo");
+                            System.out.println("2. Cambiar descripcion");
+                            System.out.println("3. Cambiar prioridad");
+                            System.out.println("4. Añadir responsable");
+                            System.out.println("5. Eliminar responsable");
+                            System.out.println("6. Añadir subtarea");
+                            System.out.println("7. Eliminar subtarea");
+                            System.out.println("8. Cambiar ubicacion");
+                            System.out.println("0. Volver");
+                            System.out.print("Elige opcion: ");
+                            opcion = scanner.nextInt();
+
+                            switch (opcion) {
+                                case 1 -> {
+                                    System.out.println("Escribe nuevo titulo:");
+                                    tareaPersonal.setTitulo(scanner.next());
+                                    System.out.println("Titulo actualizado.");
+                                }
+                                case 2 -> {
+                                    System.out.println("Escribe nueva descripcion:");
+                                    tareaPersonal.setDescripcion(scanner.next());
+                                    System.out.println("Descripcion actualizada.");
+                                }
+                                case 3 -> {
+                                    System.out.println("Escribe nueva prioridad BAJA,MEDIA,ALTA:");
+                                    Prioridad prioridad = Prioridad.valueOf(scanner.next().toUpperCase());
+                                    tareaPersonal.setPrioridad(prioridad);
+                                    System.out.println("Prioridad actualizada.");
+                                }
+                                case 4 -> {
+                                    System.out.println("Introduce dni: ");
+                                    String dni = scanner.next();
+                                    System.out.println("Introduce nombre: ");
+                                    String nombre = scanner.next();
+                                    System.out.println("Introduce apellido: ");
+                                    String apellido = scanner.next();
+                                    System.out.println("Introduce edad: ");
+                                    int edad = scanner.nextInt();
+                                    tareaPersonal.asignarResponsable(new Persona(dni, nombre, apellido, edad));
+                                }
+                                case 5 -> {
+                                    System.out.println("Introduce dni del responsable:");
+                                    tareaPersonal.eliminarResponsable(scanner.next());
+                                    System.out.println("Responsable eliminado.");
+                                }
+                                case 6 -> {
+                                    System.out.println("Introduce id de subtarea: ");
+                                    int idSub = scanner.nextInt();
+                                    System.out.println("Introduce descripcion de subtarea: ");
+                                    String descSub = scanner.next();
+                                    tareaPersonal.agregarEncargo(new Encargo(idSub, descSub));
+                                }
+                                case 7 -> {
+                                    System.out.println("Introduce id de la subtarea a eliminar: ");
+                                    tareaPersonal.borrarEncargo(scanner.nextInt());
+                                }
+                                case 8 -> {
+                                    System.out.println("Introduce nueva ubicacion: ");
+                                    tareaPersonal.setUbicacion(scanner.next());
+                                    System.out.println("Ubicacion actualizada.");
+                                }
+                                case 0 -> System.out.println("Volviendo al menu principal...");
+                                default -> System.out.println("Opcion no valida.");
+                            }
+                        } while (opcion != 0);
                     }
-                    case 0 -> System.out.println("Saliendo del menu de modificacion...");
+
+                    case 0 -> System.out.println("Saliendo de modificacion...");
                     default -> System.out.println("Opcion no valida.");
                 }
 
-            }while (opcion!=0);
+            } while (opcionTarea != 0);
 
         } else {
             System.out.println("No existe tarea con ese ID.");
         }
     }
+
 
 
     public void listarTareas() {
@@ -483,6 +584,21 @@ public class Tarea {
                 '}';
     }
 
+    public Prioridad getPrioridad() {
+        return prioridad;
+    }
+
+    public void setPrioridad(Prioridad prioridad) {
+        this.prioridad = prioridad;
+    }
+
+    public ArrayList<Tarea> getTareas() {
+        return tareas;
+    }
+
+    public void setTareas(ArrayList<Tarea> tareas) {
+        this.tareas = tareas;
+    }
 }
 
 

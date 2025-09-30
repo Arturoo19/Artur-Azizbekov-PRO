@@ -2,7 +2,7 @@ package model;
 
 public class TareaPersonal extends Tarea {
     private String ubicacion;
-    private double presupuesto;
+
 
     /*@Override
     public void enviarRecordatorio(){
@@ -12,10 +12,9 @@ public class TareaPersonal extends Tarea {
     public TareaPersonal(){
     }
 
-    public TareaPersonal(int id, String titulo,String descripcion,int numeroPersonas,Prioridad prioridad ,String ubicacion, double presupuesto){
+    public TareaPersonal(int id, String titulo,String descripcion,int numeroPersonas,Prioridad prioridad ,String ubicacion){
         super(id, titulo,descripcion,numeroPersonas,prioridad);
         this.ubicacion = ubicacion;
-        this.presupuesto = presupuesto;
 
     }
 

@@ -45,7 +45,7 @@ class Cliente(var id:Int, var nombre:String, ) {
             println("Se han encontrado varios coincidencias"+"" +
                     "1 para borrar primero/ n para borrar todos")
             val opcion:String = readln()
-            if (opcion.equals(1,true)){
+            if (opcion.equals("cdd",true)){
                 carrito.remove(productoEliminar.first())
             } else  if (opcion.equals("n",true)){
                 carrito.removeAll(productoEliminar.toSet())
