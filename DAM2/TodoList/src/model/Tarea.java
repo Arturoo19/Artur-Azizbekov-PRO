@@ -51,8 +51,6 @@ public class Tarea {
 
 
 
-
-
     public void asignarResponsable(Persona persona) {
         for (int i = 0; i < encargados.length; i++) {
             if (encargados[i] == null && !estaDNI(persona.getDni())) {
@@ -62,6 +60,14 @@ public class Tarea {
             }
         }
         System.out.println("No hay hueco disponible, tarea completa");
+    }
+    public void asignarResponsable1(Persona persona){
+        for (int i = 0; i < encargados.length-1; i++) {
+            if (encargados[i]!=null && !estaDNI1(persona.getDni())){
+                encargados[i] = persona;
+                return;
+            }
+        }
     }
 
     public void eliminarResponsable(String dni) {
@@ -105,11 +111,26 @@ public class Tarea {
         }
         return false;
     }
+    private boolean estaDNI1(String dni){
+        for (Persona persona: encargados){
+            if (persona != null && persona.getDni().equalsIgnoreCase(dni)){
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     private Encargo estaEncargo(int id) {
 
         for (Encargo encargo : listaTareas) {
             if (encargo.getId() == id) return encargo;
+        }
+        return null;
+    }
+    private Encargo estaEncargo1(int id){
+        for (Encargo encargo:listaTareas){
+            if (encargo.getId()==id) return encargo;
         }
         return null;
     }
