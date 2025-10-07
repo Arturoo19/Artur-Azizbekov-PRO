@@ -8,4 +8,5 @@ abstract class Armas(var id:Int,var nombre:String,var nivelPotencia:Int,var nive
         println("Nivel de potencia: $nivelPotencia")
         println("Nivel de daño: $nivelDanio")
     }
+
 }

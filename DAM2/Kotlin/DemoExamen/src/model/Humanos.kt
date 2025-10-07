@@ -4,7 +4,7 @@ class Humanos(id:Int,nombre:String,nivel:Int,var resistencia:Int,var arma:ArmasT
     :Superheroes(id, nombre, nivel) {
 
     override fun calcularPoder(): Int {
-        return (nivel + (arma.nivelPotencia*arma.nivelDanio))
+        return (nivel + (arma.nivelPotencia*arma.nivelDanio)+resistencia)
     }
 
     override fun mostrarDatos() {

@@ -61,6 +61,26 @@ class Plataforma(var listaSuperheroes: ArrayList<Superheroes>,var listaArmas: Ar
         }
     }
     fun enfrentarSuperheroes(){
+        if (listaSuperheroes.size<2){
+            println("No hay suficientes superheroes..")
+            return
+        }
+        println("itroduce el ID del superhero1")
+        val id1 = readln().toInt()
+        val superheroe1 = listaSuperheroes.find { it.id == id1 } ?: return println("No existe este id")
+
+        println("Introduce id de superheroe2:")
+        val id2 = readln().toInt()
+        val superheroe2 = listaSuperheroes.find { it.id == id2 } ?: return println("No existe este id")
+
+        val poder1 = superheroe1.calcularPoder()
+        val poder2 = superheroe2.calcularPoder()
+
+        when{
+            poder1>poder2-> println("el ganador es ${superheroe1.nombre}")
+            poder1<poder2-> println("el ganador es ${superheroe2.nombre}")
+            else -> println("Es un empate")
+        }
 
     }
 }
