@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b28ffa18-8333-4cb2-8b61-3b05b809eb72" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../TrabajadoresHerencia/src/Main.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../TrabajadoresHerencia/src/model/Persona.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../TrabajadoresHerencia/src/model/Trabajador.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Tienda/src/model/Cliente.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../Tienda/src/model/Cliente.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DemoExamen/src/controller/Plataforma.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DemoExamen/src/model/Armas.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DemoExamen/src/model/ArmasBiologicas.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DemoExamen/src/model/ArmasTradicionales.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DemoExamen/src/model/Descargable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DemoExamen/src/model/Humanos.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DemoExamen/src/model/Mutantes.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DemoExamen/src/model/Superheroes.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DemoExamen/src/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../DemoExamen/src/Main.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +62,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/GitHub/Artur-Azizbekov-PRO/DAM2/TodoList"
+    "last_opened_file_path": "C:/GitHub/Artur-Azizbekov-PRO/DAM2/Kotlin/TodoList"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
