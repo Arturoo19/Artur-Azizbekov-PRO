@@ -2,7 +2,10 @@ package controller
 
 import model.*
 
-class Plataforma(var listaSuperheroes: ArrayList<Superheroes>,var listaArmas: ArrayList<Armas>) {
+class Plataforma {
+    var listaSuperheroes = arrayListOf<Superheroes>()
+    var listaArmas = arrayListOf<Armas>()
+
     fun crearSuperheroe(){
         println("Que tipo de superheroe quieres crear? 1.humano 2.mutante")
         val tipo = readln().toInt()
