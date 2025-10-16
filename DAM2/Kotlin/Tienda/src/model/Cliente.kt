@@ -2,7 +2,7 @@ package model
 
 import Producto
 
-class Cliente(var id:Int, var nombre:String, ) {
+class Cliente(var id:Int, var nombre:String) {
     var factura: Double = 0.0
     lateinit var carrito: ArrayList<Producto>
 
@@ -42,17 +42,28 @@ class Cliente(var id:Int, var nombre:String, ) {
             carrito.remove(productoEliminar.first())
             println("Producto borrado")
         } else{
-            println("Se han encontrado varios coincidencias"+"" +
+            println("Se han encontrado varias coincidencias, "+
                     "1 para borrar primero/ n para borrar todos")
             val opcion:String = readln()
-            if (opcion.equals("cdd",true)){
+            if (opcion.equals("1",true)){
                 carrito.remove(productoEliminar.first())
             } else  if (opcion.equals("n",true)){
                 carrito.removeAll(productoEliminar.toSet())
             }
         }
+    }
 
-
+    fun pedirfactura(){
+        if (carrito.isEmpty()){
+            println("No hay productos en la lista")
+        } else{
+            carrito.forEach{
+                factura+=it.precio
+            }
+            println("Debes un total de $factura")
+            carrito.clear()
+            factura = 0.0
+        }
     }
 
 
