@@ -10,11 +10,29 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="App Android"
         android:textSize="25sp"
+        android:gravity="center"
+        android:layout_weight="0.5"
+
+
+        android:text="@string/texto_Inicial"
+        />
+    <EditText
+        android:id="@+id/editNombre"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        />
+    <Button
+        android:id="@+id/botonSaludar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/boton_pulsar"
+        android:layout_marginTop="20dp"
+        android:layout_weight="0.2"
+        android:layout_gravity="center"
         />
 
 
