@@ -8,17 +8,24 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.loginapp.R
 import com.example.loginapp.databinding.ActivitySecondBinding
+import com.example.loginapp.model.Usuario
 
 class SecondActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySecondBinding
+    var usuario: Usuario ?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.textoSaludo.text = "bienvenido ${intent.getStringExtra("correo")!!}"
+        usuario = intent.getSerializableExtra("usuario") as Usuario
+        binding.textoSaludo.text = "Bienvenido ${usuario?.correo}"
+        binding.textoPlataforma.text = "Sesion iniciada con ${usuario?.plataforma}"
+
+
         //binding.textoSaludo.setText("bienvenido ${intent.getStringExtra("correo")!!}")
+        //binding.textoSaludo.text = "bienvenido ${intent.getSerializableExtra<Usuario>("usuario")!!}"
 
 
     }

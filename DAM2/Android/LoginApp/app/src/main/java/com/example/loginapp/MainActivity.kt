@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.transition.Visibility
 import com.example.loginapp.databinding.ActivityMainBinding
+import com.example.loginapp.model.Usuario
 import com.example.loginapp.ui.activity.SecondActivity
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.snackbar.Snackbar
@@ -79,11 +80,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
                         val intent:Intent = Intent(applicationContext,
                             SecondActivity::class.java)
 
-                        
+                        val usuario: Usuario = Usuario(binding.editCorreo.text.toString(),
+                            binding.editPass.text.toString(),
+                            binding.spinnerPerfil.selectedItem.toString())
 
-                        intent.putExtra("correo",binding.editCorreo.text.toString())
-                        intent.putExtra("pass",binding.editPass.text.toString())
-                        intent.putExtra("plataforma",binding.spinnerPerfil.selectedItem.toString())
+                        intent.putExtra("usuario",usuario)
                         startActivity(intent)
                         finish()
                     } else {
