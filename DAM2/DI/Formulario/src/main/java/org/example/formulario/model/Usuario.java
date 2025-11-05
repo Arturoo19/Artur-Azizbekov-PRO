@@ -7,13 +7,14 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Usuario {
-    private String nombre,correo,localizacion;
+
+    private String nombre, correo, localizacion, genero;
     private int edad;
-    private boolean desponibilidad;
+    private boolean disponibilidad;
 
-
-    public Usuario(String nombre, String correo, String localizacion, String genero, int edad, boolean disponibilidad) {
+    @Override
+    public String toString() {
+        return nombre;
     }
 }
