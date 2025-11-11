@@ -20,7 +20,7 @@
 
     <EditText
         android:drawableStart="@drawable/email"
-        android:hint="Introduce correo"
+        android:hint="@string/hint_correo"
         android:inputType="textEmailAddress"
         android:gravity="center"
         android:id="@+id/editCorreo"
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/contrasena"
         android:gravity="center"
-        android:hint="Introduce password"
+        android:hint="@string/hint_pass"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@+id/iamgenLogin"
         app:layout_constraintStart_toStartOf="@+id/iamgenLogin"
@@ -57,7 +57,7 @@
         android:id="@+id/checkRecordar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recordar contraseña"
+        android:text="@string/text_checkBox"
         app:layout_constraintEnd_toEndOf="@+id/spinnerPerfil"
         app:layout_constraintTop_toBottomOf="@+id/spinnerPerfil" />
 

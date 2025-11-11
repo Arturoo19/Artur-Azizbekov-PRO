@@ -7,12 +7,14 @@ module org.example.formulario {
     requires net.synedra.validatorfx;
 
     requires lombok;
+    requires java.sql;
+    requires java.desktop;
 
-    opens org.example.formulario to javafx.fxml;
+    opens org.example.formulario to javafx.fxml, java.sql;
     exports org.example.formulario;
     exports org.example.formulario.controller;
-    opens org.example.formulario.controller to javafx.fxml;
+    opens org.example.formulario.controller to javafx.fxml, java.sql;
 
-    opens org.example.formulario.model to lombok;
+    opens org.example.formulario.model to lombok, java.sql;
     exports org.example.formulario.model;
 }

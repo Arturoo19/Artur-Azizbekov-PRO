@@ -6,4 +6,8 @@
         <item>GitHub</item>
         <item>Facebook</item>
     </string-array>
+    <string name="text_checkBox">Recordar contraseña</string>
+    <string name="hint_pass">Introduce contraseña</string>
+    <string name="hint_correo">Introduce correo</string>
+
 </resources>
