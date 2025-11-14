@@ -38,7 +38,7 @@
         android:drawableStart="@drawable/contrasena"
         android:gravity="center"
         android:hint="@string/hint_pass"
-        android:inputType="textPassword"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="@+id/iamgenLogin"
         app:layout_constraintStart_toStartOf="@+id/iamgenLogin"
         app:layout_constraintTop_toBottomOf="@+id/editCorreo" />

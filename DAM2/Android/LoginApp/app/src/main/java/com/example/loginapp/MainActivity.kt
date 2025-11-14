@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
             binding.botonLogin.id->{
                 binding.botonLogin.setOnClickListener { view ->
                     val correo = binding.editCorreo.text.toString().trim()
-                    val contrasena = binding.editPass.text.toString().trim()
+                    val contrasena = binding.editPass.text.toString()
 
                     if (correo.isEmpty() || contrasena.isEmpty()){
                         Snackbar.make(view, "Faltan datos", Snackbar.LENGTH_SHORT).show()
