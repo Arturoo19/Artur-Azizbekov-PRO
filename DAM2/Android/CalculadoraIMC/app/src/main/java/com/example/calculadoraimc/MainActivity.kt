@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.calculadoraimc.databinding.ActivityMainBinding
 import com.example.calculadoraimc.ui.SecondActivity
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.snackbar.SnackbarContentLayout
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var binding: ActivityMainBinding
@@ -32,15 +33,25 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 val altura = binding.textAltura.text.toString().trim()
                 val peso = binding.textPeso.text.toString().trim()
+                val selectedId = binding.radioGroupGenero.checkedRadioButtonId
 
                 if (altura.isEmpty() || peso.isEmpty()){
                     Snackbar.make(v,"Faltan datos",Snackbar.LENGTH_SHORT).show()
-                } else{
+                    return
+                }else if (selectedId==-1){
+                    Snackbar.make(v,"Seleccione un genero", Snackbar.LENGTH_SHORT).show()
+                    return
+                } else {
                     val intent: Intent = Intent(
                         this, SecondActivity::class.java)
-
+                    val genero = if (selectedId == binding.radioButtonMasculino.id){
+                        "masculino"
+                    } else{
+                        "femenino"
+                    }
                     intent.putExtra("altura",altura)
                     intent.putExtra("peso",peso)
+                    intent.putExtra("genero",genero)
                     startActivity(intent)
                     //finish()
 

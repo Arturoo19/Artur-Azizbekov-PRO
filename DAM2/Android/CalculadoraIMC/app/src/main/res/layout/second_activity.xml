@@ -26,7 +26,7 @@
         android:padding="12dp"
         android:gravity="center"
         android:layout_marginHorizontal="15dp"
-        android:text="Introduce altura"
+        android:hint="Introduce altura"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textTitulo" />
@@ -40,7 +40,7 @@
         android:layout_marginHorizontal="15dp"
         android:gravity="center"
         android:padding="12dp"
-        android:text="Introduce su peso"
+        android:hint="Introduce su peso"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,5 +81,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroupGenero" />
+
+    <TextView
+        android:id="@+id/textResultadoIMC"
+        android:layout_marginHorizontal="40dp"
+        android:textSize="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonCalcular" />
+
+    <TextView
+        android:id="@+id/textEstado"
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+
+        android:text=""
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textResultadoIMC" />
+
+    <ImageView
+        android:id="@+id/imageEstado"
+        android:layout_width="155dp"
+        android:layout_height="155dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginHorizontal="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botonCalcular" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

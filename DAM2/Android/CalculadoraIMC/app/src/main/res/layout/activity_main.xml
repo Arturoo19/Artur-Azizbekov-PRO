@@ -20,7 +20,7 @@
 
     <EditText
         android:id="@+id/textAltura"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:layout_marginTop="25dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
 
     <EditText
         android:id="@+id/textPeso"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:layout_marginTop="25dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
