@@ -173,7 +173,6 @@ public class FormController implements Initializable {
         return null;
     }
 
-
     class ManejoActions implements EventHandler<ActionEvent> {
 
         @Override
