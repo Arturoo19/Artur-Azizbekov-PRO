@@ -109,6 +109,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             "-"-> resultado = num1-num2
             "/"-> if (num2 !=0) resultado = num1/num2 else{
                 binding.textIntroducir.setText("Error")
+
             }
             "*"-> resultado = num1*num2
             else -> resultado = num2

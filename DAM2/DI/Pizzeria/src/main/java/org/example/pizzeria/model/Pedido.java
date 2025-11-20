@@ -1,31 +1,23 @@
 package org.example.pizzeria.model;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
-
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 
 public class Pedido {
     private int id;
-    private String nombreCliente;
-    private int telefono;
-    private Pizza pizza;
+    private String nombre,telefono;
     private boolean servido;
-
-    public Pedido(List<Pedido> pedidos, String nombre, String telefono, Pizza pizzaCompleta) {
-    }
+    private Pizza pizza;
 
 
-    @Override
-    public String toString() {
-        return "Pedido{" +
-                "nombreCliente='" + nombreCliente + '\'' +
-                ", id=" + id +
-                ", pizza=" + pizza +
-                '}';
+    public Pedido(String nombre, String telefono, Pizza pizza) {
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.pizza = pizza;
+        this.servido = false;
     }
 }

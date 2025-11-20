@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ExamenEtiquetas</string>
+    <string-array name="conmustibles">
+        <item>Gasolina</item>
+        <item>Diesel</item>
+        <item>Hibrido</item>
+        <item>Electrico</item>
+    </string-array>
+
+</resources>

@@ -1,18 +1,14 @@
 package org.example.pizzeria.model;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 
 public class Pizza {
-    private String nombre;
-    private String size;
+    private String nombre,tamanio;
     private double precio;
-
 
 
 
@@ -20,4 +16,6 @@ public class Pizza {
     public String toString() {
         return nombre;
     }
+
+
 }

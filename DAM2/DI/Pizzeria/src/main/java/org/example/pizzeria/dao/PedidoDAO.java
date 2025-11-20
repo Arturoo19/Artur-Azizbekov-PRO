@@ -7,6 +7,10 @@ import java.util.List;
 
 public interface PedidoDAO {
     void insertarPedido(Pedido pedido) throws SQLException;
-    List<Pedido> obtenerPedido();
-    int borrarPedido(String nombre);
+    List<Pedido> obtenerPedidos();
+    List<Pedido> obtenerPedidosPendientes() throws SQLException;
+    void marcarServido(int idPedido) throws SQLException;
+    Pedido obtenerPedidoPorId(int idPedido) throws SQLException;
+
+
 }
