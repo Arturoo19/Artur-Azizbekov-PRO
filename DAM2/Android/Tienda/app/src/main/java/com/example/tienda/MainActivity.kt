@@ -1,38 +1,46 @@
+
 package com.example.tienda
 
-import android.app.DialogFragment
-import android.app.Fragment
-import android.app.FragmentManager
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 
 import android.view.View
 import android.widget.AdapterView
-import android.widget.Toast
 
 import androidx.appcompat.app.AppCompatActivity
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tienda.adapter.AdapterProducto
+import com.example.tienda.databinding.ActivityCarritoBinding
 import com.example.tienda.databinding.ActivityMainBinding
 import com.example.tienda.dataset.DataSet
 import com.example.tienda.model.Producto
+import com.example.tienda.ui.activitys.CarritoActivity
+import com.example.tienda.ui.dialogs.DialogoComparar
 import com.example.tienda.ui.dialogs.DialogoInformacion
+import com.example.tienda.ui.dialogs.DialogoResultado
+import com.google.android.material.snackbar.Snackbar
+import java.util.Locale
 
 class MainActivity : AppCompatActivity(),
-    AdapterProducto.OnProductoCarritoListener {
+    AdapterProducto.OnProductoCarritoListener, DialogoComparar.OnCompararListener {
 
     private lateinit var binding: ActivityMainBinding
+    private var productoComparar1: Producto? = null
+    private var productoComparar2: Producto? = null
+
     private lateinit var adapterProducto: AdapterProducto
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
-
         val lista: ArrayList<Producto> = DataSet.lista
         // quiero obtener la lista de productos de una categoria determinada
         // categoria
@@ -55,7 +63,7 @@ class MainActivity : AppCompatActivity(),
         }
         binding.recyclerProductos.adapter = adapterProducto;
 
-        acciones()
+        // acciones()
 
 
     }
@@ -70,7 +78,11 @@ class MainActivity : AppCompatActivity(),
                     id: Long
                 ) {
                     var categoriaSeleccionada = parent!!.adapter.getItem(position)
-                    var listaFiltrada = DataSet.getListaFiltrada(categoriaSeleccionada.toString())
+                    var listaFiltrada = DataSet.getListaFiltrada(
+                        categoriaSeleccionada.toString().lowercase(
+                            Locale.ROOT
+                        )
+                    )
                     adapterProducto.chageList(listaFiltrada)
                     // adapterProducto = AdapterProducto(listaFiltrada, this@MainActivity)
                     // binding.recyclerProductos.adapter = adapterProducto;
@@ -88,38 +100,85 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-
-            R.id.menu_carrito -> {
+        when(item.itemId){
+            // ver la activity del carrito
+            R.id.menu_carrio->{
                 val intent = Intent(this, CarritoActivity::class.java)
-                startActivity(intent)            }
-
-            R.id.menu_filtrar -> {
-                filtrarLista()
+                startActivity(intent)
             }
-
-            R.id.menu_limpiar -> {
-                limpiarFiltro()
+            // fitrar la lista (no se filtra por el cambio)
+            R.id.menu_filtrar->{
+                val seleccionSpinner = binding.spinnerCategorias.selectedItem.toString()
+                val lista = DataSet.getListaFiltrada(seleccionSpinner)
+                adapterProducto.chageList(lista)
             }
-            R.id.menu_info ->{
+            // quito el filtro de la lista, y pongo todos los elementos
+            R.id.menu_limpiar->{
+                val lista = DataSet.getListaFiltrada("todas")
+                adapterProducto.chageList(lista)
+            }
+            R.id.menu_info->{
                 val dialogoInformacion: DialogoInformacion = DialogoInformacion()
                 dialogoInformacion.show(supportFragmentManager,null)
             }
+
+            R.id.menu_comparar ->{
+                val dialogoComparar = DialogoComparar()
+                dialogoComparar.show(supportFragmentManager,null)
+            }
         }
-        return true
+        return true;
     }
 
-    private fun filtrarLista() {
-        val listaFiltrada = DataSet.getListaFiltrada("tecnologia")
-        adapterProducto.chageList(listaFiltrada)
+    override fun onRestart() {
+        super.onRestart()
+        actualizarContadorCarrito()
     }
-    private fun limpiarFiltro() {
-        adapterProducto.chageList(DataSet.lista)
-        binding.spinnerCategorias.setSelection(0)
-    }
-
 
     override fun actualizarContadorCarrito() {
         binding.textoContador.text = DataSet.listaCarrito.size.toString()
     }
+
+    override fun onProductoComparar(producto: Producto) {
+        if (productoComparar1 == null){
+            productoComparar1 = producto
+            Snackbar.make(binding.root,"Primer producto seleccionado",
+                Snackbar.LENGTH_SHORT).show()
+        } else if (productoComparar2 == null){
+            productoComparar2 = producto
+            Snackbar.make(binding.root,"Segundo producto seleccionado",
+                Snackbar.LENGTH_SHORT).show()
+            val dialogo = DialogoComparar()
+            dialogo.show(supportFragmentManager,null)
+        }
+    }
+
+    override fun OnCompararSelected(opcion: String) {
+        val dialogo = DialogoResultado.newInstance(productoComparar1!!,productoComparar2!!,opcion)
+        dialogo.show(supportFragmentManager,null)
+
+        /*if (productoComparar1 == null || productoComparar2 == null) return
+
+        val p1 = productoComparar1!!
+        val p2 = productoComparar2!!
+
+        val resultado = when (opcion) {
+            "precio" ->
+                "Precio: ${p1.nombre} = ${p1.precio}€ | ${p2.nombre} = ${p2.precio}€"
+
+            "categoria" ->
+                "Categoria: ${p1.categoria} vs ${p2.categoria}"
+
+            "stock" ->
+                "Stock: ${p1.stock} vs ${p2.stock}"
+
+            else -> "Comparación no válida"
+        }
+
+        Snackbar.make(binding.root, resultado, Snackbar.LENGTH_LONG).show()
+
+        productoComparar1 = null
+        productoComparar2 = null*/
+    }
+
 }
