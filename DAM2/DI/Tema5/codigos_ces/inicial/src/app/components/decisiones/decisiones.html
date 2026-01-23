@@ -1,1 +1,65 @@
-<p>decisiones works!</p>
+<h2>Componente decisiones</h2>
+<p>Este componente mostrará un dato dependiendo de una condición</p>
+
+<button class="btn btn-primary" (click)="cambiarMostar()">Mostrar</button>
+@if (mostrar) {
+  <p>La condición de evaluacion es true</p>
+} @else {}
+<!-- <ng-container *ngIf="mostrar">
+</ng-container> -->
+
+<!-- 
+Realizar un formulario de datos, donde se debe introducir un nombre, apellido, edad, salario,
+ años experiencia
+El sistema evaluara la idoneidad del candidato tras la pulsacion de un boton:
+ - el candidato tiene mas de 18 años
+ - el candidato pide un salario de menos de 20000 euros
+ - el candidato tiene menos de 2 años de expriencia
+ CANDIDATO IDONEO
+ - el candidato tiene mas de 18 años
+ - el candidato pide un salario de menos de 50000 euros
+ - el candidato tiene mas de 3 años de expriencia
+CANDIDATO IDONEO
+- el candidato tiene mas de 10 años de expriencia
+- el candidato tiene mas de 18 años
+CANDIDATO IDONEO
+- en el resto de los casos candidato descartado
+
+alert de bootrap indicando la contratacion del candidato. En caso de que no se pueda dar
+utilizar un alert diferente para indicar la no contratacion
+
+ALERT correcto -> "El candidato con nombre XXXXXX se ha contratado" 
+ALERT incorrecto -> "El candidato con nombre XXXXXX no cumple los requisitos" 
+-->
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+  <input type="text" class="form-control" id="inputNombre" [(ngModel)]="nombre" />
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Apellido</label>
+  <input type="text" class="form-control" id="inputApellido" [(ngModel)]="apellido" />
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Edad</label>
+  <input type="number" class="form-control" id="inputEdad" [(ngModel)]="edad" />
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Salario</label>
+  <input type="number" class="form-control" id="inputSalario" [(ngModel)]="salario" />
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Años experiencia</label>
+  <input type="number" class="form-control" id="inputAniosExp" [(ngModel)]="experiencia" />
+</div>
+<button class="btn btn-primary" (click)="evaluarCandidato()">Evaluar candidato</button>
+@if (resultado) {
+  @if (resultado.esIdoneo) {
+    <div class="alert alert-success mt-3" role="alert">
+      {{ resultado.mensaje }}
+    </div>
+  } @else {
+    <div class="alert alert-danger mt-3" role="alert">
+      {{ resultado.mensaje }}
+    </div>
+  }
+}
