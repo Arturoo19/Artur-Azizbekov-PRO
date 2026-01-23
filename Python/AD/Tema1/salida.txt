@@ -1,0 +1,26 @@
+Número total de palabras: 12345
+Número total de vocales: 29008
+
+Palabras que se repiten y su frecuencia:
+agua: 617
+arena: 617
+bosque: 617
+camino: 617
+campo: 617
+cielo: 618
+estrella: 617
+flor: 617
+fuego: 617
+hoja: 617
+luz: 618
+mar: 618
+montaña: 617
+nube: 617
+piedra: 617
+rama: 617
+rio: 617
+sol: 618
+tierra: 618
+viento: 617
+
+Palabra(s) que más se repiten (618 veces): sol, luz, cielo, mar, tierra
