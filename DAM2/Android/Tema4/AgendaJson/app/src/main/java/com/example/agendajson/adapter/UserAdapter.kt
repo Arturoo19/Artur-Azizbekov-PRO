@@ -10,6 +10,7 @@ import com.example.agendajson.R
 import com.example.agendajson.databinding.ActivityMainBinding
 import com.example.agendajson.databinding.ItemUserBinding
 import com.example.agendajson.model.User
+import com.example.agendajson.model.user
 import com.example.agendajson.ui.dialog.DialogUser
 import kotlin.random.Random
 
@@ -27,7 +28,9 @@ class UserAdapter(var context: Context) : RecyclerView.Adapter<UserAdapter.MyHol
                     R.id.menu_user_detalle->{
                         listener.onUserDetailSelected(lista[bindingAdapterPosition])
                     }
-                    R.id.menu_user_fav->{}
+                    R.id.menu_user_fav->{
+                        listener.onUserFavSelected(lista[bindingAdapterPosition])
+                    }
                 }
                 return@setOnMenuItemClickListener true
             }
@@ -79,9 +82,23 @@ class UserAdapter(var context: Context) : RecyclerView.Adapter<UserAdapter.MyHol
     override fun getItemCount(): Int {
         return lista.size
     }
+    fun clearLista(){
+        lista.clear()
+        notifyDataSetChanged()
+    }
+    fun addUser(user: User){
+        lista.add(user)
+        notifyItemInserted(lista.size - 1)
+    }
 
     interface OnItemUserListener{
         fun onUserDetailSelected(user: User)
+        fun onUserFavSelected(user: User)
+    }
+    fun setUsers(nuevaLista: List<User>){
+        lista.clear()
+        lista.addAll(nuevaLista)
+        notifyDataSetChanged()
     }
 
 

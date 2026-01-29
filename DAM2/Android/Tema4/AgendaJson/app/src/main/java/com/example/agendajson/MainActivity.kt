@@ -24,7 +24,13 @@ import org.json.JSONObject
 class MainActivity : AppCompatActivity(),
     DialogFilter.OnDialogoFiltrarListener, UserAdapter.OnItemUserListener {
 
+    companion object {
+        val listaFavoritos = ArrayList<User>()
+    }
+    private var viendoFavoritos = false
+
     private lateinit var binding: ActivityMainBinding
+
     private lateinit var adapter: UserAdapter
     private val urlBase = "https://dummyjson.com/users"
 
@@ -39,6 +45,7 @@ class MainActivity : AppCompatActivity(),
 
     private fun instancias() {
         adapter = UserAdapter(this)
+
     }
 
     private fun initGUI() {
@@ -86,6 +93,10 @@ class MainActivity : AppCompatActivity(),
                 val dialogFilter: DialogFilter = DialogFilter()
                 dialogFilter.show(supportFragmentManager, null)
             }
+            R.id.menu_ver_fav->{
+                viendoFavoritos = true
+                adapter.setUsers(listaFavoritos)
+            }
         }
 
         return super.onOptionsItemSelected(item)
@@ -106,6 +117,16 @@ class MainActivity : AppCompatActivity(),
     override fun onUserDetailSelected(user: User) {
         val dialogo: DialogUser = DialogUser.newInstance(user)
         dialogo.show(supportFragmentManager, null)
+    }
+
+    override fun onUserFavSelected(user: User) {
+        if (!listaFavoritos.contains(user)){
+            listaFavoritos.add(user)
+            Snackbar.make(binding.root,"Agregado a favoritos", Snackbar.LENGTH_SHORT).show()
+
+        } else{
+            Snackbar.make(binding.root,"Ya esta en favoritos", Snackbar.LENGTH_SHORT).show()
+        }
     }
 
 

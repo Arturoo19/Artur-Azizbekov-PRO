@@ -1,0 +1,18 @@
+<h2>Repeticiones</h2>
+
+<input class="form-control mb-2" placeholder="Introduce nombre" [(ngModel)]="nombre" />
+<input class="form-control mb-2" placeholder="Introduce apellido" [(ngModel)]="apellido" />
+<input class="form-control mb-2" type="number" placeholder="Introduce edad" [(ngModel)]="edad" />
+
+<input class="form-control mb-2" placeholder="Introduce hobbie" [(ngModel)]="hobbie" />
+<button class="btn btn-secondary mb-3" (click)="agregarHobbie()">Add hobbie</button>
+
+<button class="btn btn-primary" (click)="agregarUsuario()">Agregar</button>
+
+<ul class="list-group mt-3">
+  @for (item of usuarios; track $index) {
+    <li class="list-group-item">
+      {{ item.getNombre() }} - {{ item.getApellido() }} - {{ item.getEdad() }}
+    </li>
+  }
+</ul>
