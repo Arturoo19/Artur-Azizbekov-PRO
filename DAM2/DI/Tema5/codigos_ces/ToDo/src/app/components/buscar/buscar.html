@@ -1,6 +1,29 @@
-<h2 class="mb-4">Buqueda</h2>
-<select class="form-select" [(ngModel)]="prioridad">
-  <option value="1">Baja</option>
-  <option value="2">Media</option>
-  <option value="3">Alta</option>
-</select>
+<h2 class="mb-4">Busqueda</h2>
+<input
+  class="form-control mb-2"
+  placeholder="Introduce el responsable de la tarea que quieres encontrar"
+  [(ngModel)]="responsable"
+/>
+
+<button class="btn btn-primary mb-3" (click)="buscarResponsable()">Buscar</button>
+
+@if (!buscado) {
+} @else if (tareasFiltradas.length === 0) {
+  <p>No hay resultado</p>
+} @else {
+  @for (item of tareasFiltradas; track $index) {
+    <div class="card mb-3" style="width: 18rem">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.nombre }}</h5>
+
+        <h6 class="card-subtitle mb-2 text-muted">Responsable: {{ item.responsable }}</h6>
+
+        <p class="card-text">descripcion: {{ item.descipcion }}</p>
+
+        <span class="badge bg-danger" *ngIf="item.prioridad === 1">Alta</span>
+        <span class="badge bg-warning text-dark" *ngIf="item.prioridad === 2">Media</span>
+        <span class="badge bg-success" *ngIf="item.prioridad === 3">Baja</span>
+      </div>
+    </div>
+  }
+}

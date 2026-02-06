@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Tareas } from '../../services/tareas';
+import { tarea } from '../../model/tarea';
 
 @Component({
   selector: 'app-buscar',
@@ -7,5 +9,20 @@ import { Component } from '@angular/core';
   styleUrl: './buscar.css',
 })
 export class Buscar {
-  prioridad: any;
+  responsable:string = ""
+  tareasFiltradas: tarea[] = [] 
+  buscado:boolean = false
+
+  constructor(private tareasServicio: Tareas){}
+
+  buscarResponsable(){
+    this.buscado = true
+    if(this.responsable.trim() === ""){
+      this.tareasFiltradas = []
+      return
+    }
+    this.tareasFiltradas = this.tareasServicio.getTareaResponsable(this.responsable)
+  }
+
+
 }

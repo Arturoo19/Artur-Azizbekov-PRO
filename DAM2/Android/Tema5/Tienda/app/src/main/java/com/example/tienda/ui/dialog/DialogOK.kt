@@ -9,28 +9,32 @@ import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import com.example.tienda.R
 import com.example.tienda.databinding.FragmentLoginBinding
+import com.google.firebase.auth.FirebaseAuth
 
-class DialogLogin: DialogFragment() {
-    private lateinit var binding: FragmentLoginBinding
+class DialogOK: DialogFragment() {
+    private lateinit var uid: String
+    private lateinit var auth: FirebaseAuth
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        auth = FirebaseAuth.getInstance()
+        uid = auth.currentUser!!.uid
+        // requireArguments().getString("uid").toString()
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+
         val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
-
         builder.setTitle("Registro correcto")
-        builder.setMessage("Quieres iniciar seciom con el usuario?")
-        builder.setPositiveButton("SI",{_,_->{
+        builder.setMessage("Quieres iniciar sesion con el usuario $uid")
+        builder.setPositiveButton("SI", { _, _ ->
             findNavController().navigate(R.id.action_dialogLogin_to_mainFragment)
-        }})
-        builder.setNegativeButton("NO",{_,_->{
+        })
+        builder.setNegativeButton("NO", { _, _ ->
+            auth.signOut()
             findNavController().navigate(R.id.action_dialogLogin_to_loginFragment)
-        }})
-        builder.setView(binding.root)
 
-
+        })
         return builder.create()
     }
 }

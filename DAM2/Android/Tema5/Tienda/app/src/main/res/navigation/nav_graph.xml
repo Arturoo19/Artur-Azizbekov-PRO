@@ -9,7 +9,7 @@
     <fragment
         tools:layout="@layout/fragment_login"
         android:id="@+id/loginFragment"
-        android:name="com.example.tienda.ui.fragment.ui.LoginFragment"
+        android:name="com.example.tienda.ui.fragment.LoginFragment"
         android:label="LoginFragment" >
 
         <action
@@ -31,15 +31,21 @@
         <action
             android:id="@+id/action_registroFragment_to_dialogError"
             app:destination="@id/dialogError" />
+        <argument
+            android:name="correo"
+            app:argType="string" />
+        <argument
+            android:name="pass"
+            app:argType="string" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_main"
         android:id="@+id/mainFragment"
-        android:name="com.example.tienda.ui.fragment.ui.MainFragment"
+        android:name="com.example.tienda.ui.fragment.MainFragment"
         android:label="MainFragment" />
     <dialog
         android:id="@+id/dialogLogin"
-        android:name="com.example.tienda.ui.dialog.DialogLogin"
+        android:name="com.example.tienda.ui.dialog.DialogOK"
         android:label="DialogLogin" >
         <action
             android:id="@+id/action_dialogLogin_to_mainFragment"
