@@ -1,0 +1,12 @@
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<VBox spacing="10" alignment="CENTER"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.nazariijavafx.controller.ListaController">
+
+    <Label text="Lista de Productos"/>
+    <ListView fx:id="listViewProductos" prefWidth="300"/>
+
+</VBox>

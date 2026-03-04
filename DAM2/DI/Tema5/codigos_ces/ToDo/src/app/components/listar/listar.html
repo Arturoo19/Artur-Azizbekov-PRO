@@ -1,30 +1,7 @@
-<select
-  class="form-select mb-2"
-  (change)="filtrarPorPrioridad()"
-  [(ngModel)]="prioridadSeleccionada"
->
-  <option value="1">Alta</option>
-  <option value="2">Media</option>
-  <option value="3">Baja</option>
-</select>
+<h2>Listar</h2>
 
-@for (item of tareas; track $index) {
-  <div class="card mb-3" style="width: 18rem">
-    <div class="card-body">
-      <h5 class="card-title">{{ item.nombre }}</h5>
-
-      <h6 class="card-subtitle mb-2 text-muted">Responsable: {{ item.responsable }}</h6>
-
-      <p class="card-text">{{ item.descipcion }}</p>
-      <ul class="list-group">
-        @for (data of item.items; track $index) {
-          <li class="list-group-item">{{ data }}</li>
-        }
-      </ul>
-
-      <span class="badge bg-danger" *ngIf="item.prioridad === 1">Alta</span>
-      <span class="badge bg-warning text-dark" *ngIf="item.prioridad === 2">Media</span>
-      <span class="badge bg-success" *ngIf="item.prioridad === 3">Baja</span>
-    </div>
-  </div>
-}
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  @for (data of tareas; track $index) {
+    <app-carta [item]="data"></app-carta>
+  }
+</div>

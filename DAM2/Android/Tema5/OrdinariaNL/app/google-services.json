@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "795769303904",
+    "firebase_url": "https://cesordinl-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "cesordinl",
+    "storage_bucket": "cesordinl.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795769303904:android:2d01dd0142466b4b29a405",
+        "android_client_info": {
+          "package_name": "com.example.ordinarianl"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIYH2qPQGTHb8_77JuP2P5CysQZ0_A_9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

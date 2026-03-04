@@ -1,0 +1,17 @@
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<VBox spacing="10" alignment="CENTER"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.nazariijavafx.controller.ProductoController">
+
+    <TextField fx:id="txtCodigo" promptText="Código"/>
+    <TextField fx:id="txtNombre" promptText="Nombre"/>
+    <TextField fx:id="txtDescripcion" promptText="Descripción"/>
+    <TextField fx:id="txtPrecio" promptText="Precio"/>
+
+    <Button text="Agregar Producto" onAction="#onAgregar"/>
+    <Button text="Ver Lista" onAction="#onIrLista"/>
+
+</VBox>

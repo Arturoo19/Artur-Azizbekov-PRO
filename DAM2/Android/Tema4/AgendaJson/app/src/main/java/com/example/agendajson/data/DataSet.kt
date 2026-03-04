@@ -1,6 +1,6 @@
 package com.example.tienda.data
 
-import com.example.tienda.model.User
+import com.example.agendajson.model.User
 
 class DataSet {
     companion object {

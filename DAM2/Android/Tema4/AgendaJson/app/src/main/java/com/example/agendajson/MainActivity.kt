@@ -60,8 +60,7 @@ class MainActivity : AppCompatActivity(),
 
         // 1. Realizar la peticion de forma correcta
         val peticionJSON: JsonObjectRequest = JsonObjectRequest(
-            url,
-            {
+            url,{
                 val gson = Gson()
                 val usersArray: JSONArray = it.getJSONArray("users")
                 for (i in 0..usersArray.length() - 1) {

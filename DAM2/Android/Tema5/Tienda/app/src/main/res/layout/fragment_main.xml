@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="NOMBRE"
+        android:text=""
         android:textSize="30sp"
         android:gravity="center"
         android:id="@+id/textNombreMain"
@@ -32,10 +32,11 @@
 
 
 
-    <androidx.recyclerview.widget.RecyclerView
+    <TextView
+        android:id="@+id/textPreferencias"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recyclerProductos"
-        />
+        android:layout_height="wrap_content"
+        android:textSize="16sp"/>
+
 
 </LinearLayout>

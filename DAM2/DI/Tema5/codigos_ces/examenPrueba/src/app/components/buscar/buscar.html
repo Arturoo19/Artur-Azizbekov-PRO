@@ -1,0 +1,9 @@
+<h2>Buscar por Nombre Cliente: {{ nombreBuscar }}</h2>
+
+<div *ngIf="filtradas.length === 0" class="alert alert-warning">No se encontraron pedidos</div>
+
+<div class="row">
+  <div class="col-md-4 mb-3" *ngFor="let p of filtradas">
+    <app-carta [item]="p"></app-carta>
+  </div>
+</div>

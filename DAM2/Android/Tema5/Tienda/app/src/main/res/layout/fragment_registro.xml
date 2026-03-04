@@ -31,6 +31,25 @@
         android:gravity="center"
         android:layout_marginBottom="20dp"
         />
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkUxUi"
+        android:text="UX/UI"/>
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBasesDatos"
+        android:text="Bases de datos"/>
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkSeguridad"
+        android:text="Seguridad"/>
+
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

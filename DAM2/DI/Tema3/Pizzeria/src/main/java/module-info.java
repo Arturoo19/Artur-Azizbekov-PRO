@@ -9,9 +9,6 @@ module org.example.pizzeria {
     requires lombok;
     requires java.sql;
 
-
-
-
     opens org.example.pizzeria to javafx.fxml,java.sql;
     exports org.example.pizzeria;
     exports org.example.pizzeria.controller;

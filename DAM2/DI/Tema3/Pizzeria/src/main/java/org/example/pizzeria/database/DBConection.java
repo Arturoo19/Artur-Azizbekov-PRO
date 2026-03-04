@@ -15,8 +15,8 @@ public class DBConection {
     }
 
     private static void createConection() {
-        String user = "root";
-        String pass = "Artur190905";
+        String user = "";
+        String pass = "";
         try {
             connection = DriverManager.getConnection(String.format("jdbc:mysql://%s:%s/%s",
                     SchemaDB.URL,SchemaDB.PORT,SchemaDB.DB_NAME),user,pass);

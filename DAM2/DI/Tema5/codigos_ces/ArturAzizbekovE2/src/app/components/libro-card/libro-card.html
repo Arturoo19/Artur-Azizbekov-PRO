@@ -1,0 +1,14 @@
+<div class="card">
+  <img [src]="libro.Pages | imagenLibro" class="card-img-top" />
+  <div class="card-body">
+    <h5>{{ libro.Title }}</h5>
+    <p>Año: {{ libro.Year }}</p>
+    <ul>
+      <li *ngFor="let v of libro.villains">
+        {{ v.name }}
+      </li>
+    </ul>
+    <button class="btn btn-primary me-2" (click)="verDetalles()">Detalles</button>
+    <button class="btn btn-success" (click)="agregarCarrito()">Agregar</button>
+  </div>
+</div>

@@ -13,6 +13,7 @@ import com.example.tienda.databinding.FragmentLoginBinding
 import com.example.tienda.databinding.FragmentRegistroBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 
 class RegistroFragment: Fragment() {
@@ -20,11 +21,17 @@ class RegistroFragment: Fragment() {
     private lateinit var adaterEdad: ArrayAdapter<Int>
     private lateinit var listaEdades: ArrayList<Int>
     private lateinit var auth: FirebaseAuth
+    private lateinit var database: FirebaseDatabase
+    private val DB_URL =
+        "https://aazces2526-default-rtdb.europe-west1.firebasedatabase.app/"
+
     private var nombre: String? = null
     private var pass: String? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        database = FirebaseDatabase.getInstance(DB_URL)
+
         auth = FirebaseAuth.getInstance()
         listaEdades = ArrayList()
         for (i in 16..90) {
@@ -48,15 +55,33 @@ class RegistroFragment: Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
+
     override fun onResume() {
         /*binding.editCorreoRegistro.setText(nombre ?: "")
         binding.editPassRegistro.setText(pass ?: "")*/
+
+
+
         if (nombre != null || pass != null) {
             binding.editCorreoRegistro.setText(nombre)
             binding.editPassRegistro.setText(pass)
         }
         binding.spinnerEdadRegistro.adapter = adaterEdad
         binding.btnRegistro.setOnClickListener {
+            val preferencias = mutableListOf<String>()
+            if (binding.checkUxUi.isChecked){
+                preferencias.add("UX/UI")
+            }
+            if (binding.checkSeguridad.isChecked){
+                preferencias.add("Seguridad")
+            }
+            if (binding.checkBasesDatos.isChecked){
+                preferencias.add("Base de datos")
+            }
             // registra un usuario
             auth.createUserWithEmailAndPassword(
                 binding.editCorreoRegistro.text.toString(),
@@ -66,6 +91,16 @@ class RegistroFragment: Fragment() {
                     Snackbar.make(binding.root, "Usuario creado con existo", Snackbar.LENGTH_SHORT)
                         .show()
                     val usuarioLogeado = auth.currentUser!!.uid
+                    database.reference
+                        .child("usuarios")
+                        .child(usuarioLogeado)
+                        .setValue(Usuario(binding.editNombreRegistro.text.toString(),
+                                binding.editApellidoRegistro.text.toString(),
+                            binding.spinnerEdadRegistro.selectedItem as Int,
+                            binding.editCorreoRegistro.text.toString(),
+                            preferencias
+                            ))
+
                     val bundle = Bundle()
                     // bundle.putString("uid",usuarioLogeado)
                     findNavController().navigate(R.id.action_registroFragment_to_dialogLogin)

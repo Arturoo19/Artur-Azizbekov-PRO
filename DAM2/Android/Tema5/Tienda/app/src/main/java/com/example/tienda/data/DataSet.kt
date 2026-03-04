@@ -1,6 +1,6 @@
 package com.example.tienda.data
-
 import com.example.tienda.model.Usuario
+
 
 class DataSet {
     companion object{
@@ -17,7 +17,7 @@ class DataSet {
         fun loginUser(correo: String,pass: String): Boolean{
 
 
-            return listaUsuario.find { it.correo == correo && it.password == pass }!= null
+           return true
         }
     }
 }

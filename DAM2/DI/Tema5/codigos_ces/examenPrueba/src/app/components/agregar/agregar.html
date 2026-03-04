@@ -1,0 +1,21 @@
+<h2>Agregar</h2>
+<input
+  type="text"
+  class="form-control mb-2"
+  placeholder="Introduce el nombre"
+  [(ngModel)]="nombre"
+/>
+<input type="number" class="form-control mb-2" placeholder="Telefono:" [(ngModel)]="telefono" />
+<select class="form-select mb-2" [(ngModel)]="pizzaSeleccionada">
+  <option [ngValue]="undefined">Selecciona pizza</option>
+  <option *ngFor="let item of pizzas" [ngValue]="item.id">
+    {{ item.nombre }}
+  </option>
+</select>
+
+<select class="form-select mb-2" [(ngModel)]="tamanio">
+  <option value="S">S</option>
+  <option value="M">M</option>
+  <option value="L">L</option>
+</select>
+<button class="btn btn-primary mb-2" (click)="agregarPedido()">Crear pedido</button>

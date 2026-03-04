@@ -9,22 +9,8 @@ import { Tareas } from '../../services/tareas';
   styleUrl: './listar.css',
 })
 export class Listar {
-  tareas:tarea[] = []
-  prioridadSeleccionada:number = 0
-  
-  constructor(private tareasServicio:Tareas){}
-
-  ngOnInit(): void {
-    this.tareas = this.tareasServicio.getTareas()
+  tareas: tarea[] = [];
+  constructor(private tareasSevice: Tareas) {
+    this.tareas = this.tareasSevice.getTareas();
   }
-
-  filtrarPorPrioridad(){
-    if(this.prioridadSeleccionada === 0){
-      this.tareas = this.tareasServicio.getTareas()
-    } else{
-      this.tareas = this.tareasServicio.getFiltrarTareas(this.prioridadSeleccionada)
-    }
-  }
-
-
 }

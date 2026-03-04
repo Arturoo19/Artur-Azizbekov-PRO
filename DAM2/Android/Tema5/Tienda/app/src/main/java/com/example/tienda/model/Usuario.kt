@@ -8,4 +8,5 @@ data class Usuario(
     var apellido: String?= null,
     var edad: Int?= null,
     var correo: String?= null,
-    var password: String? = null): Serializable
+    var preferencias: List<String>? = null
+    ): Serializable

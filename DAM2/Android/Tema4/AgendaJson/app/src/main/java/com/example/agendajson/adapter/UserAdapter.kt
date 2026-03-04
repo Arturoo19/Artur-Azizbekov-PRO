@@ -82,14 +82,7 @@ class UserAdapter(var context: Context) : RecyclerView.Adapter<UserAdapter.MyHol
     override fun getItemCount(): Int {
         return lista.size
     }
-    fun clearLista(){
-        lista.clear()
-        notifyDataSetChanged()
-    }
-    fun addUser(user: User){
-        lista.add(user)
-        notifyItemInserted(lista.size - 1)
-    }
+
 
     interface OnItemUserListener{
         fun onUserDetailSelected(user: User)

@@ -1,0 +1,11 @@
+<div class="col">
+  <div class="card" (click)="irADetalle()">
+    <div class="card-body">
+      <h5 class="card-title">Pedido #{{ item.id }}</h5>
+      <p class="card-text">Clienet: {{ item.nombreCliente }}</p>
+      <p>Pizza: {{ item.pizza.nombre }}</p>
+      <p>Tamanio: {{ item!!.tamano }}</p>
+      <p>Precio: {{ item!!.precioFinal }}</p>
+    </div>
+  </div>
+</div>

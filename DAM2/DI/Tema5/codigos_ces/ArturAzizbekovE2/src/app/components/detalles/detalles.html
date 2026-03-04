@@ -1,0 +1,10 @@
+<div *ngIf="libro">
+  <h2>{{ libro.Title }}</h2>
+  <p>Año: {{ libro.Year }}</p>
+  <p>Páginas: {{ libro.Pages }}</p>
+  <ul>
+    <li *ngFor="let v of libro.villains">
+      {{ v.name }}
+    </li>
+  </ul>
+</div>

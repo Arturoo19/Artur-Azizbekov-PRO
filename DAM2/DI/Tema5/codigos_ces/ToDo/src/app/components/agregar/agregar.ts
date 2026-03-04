@@ -1,15 +1,13 @@
-
 import { Component } from '@angular/core';
 import { tarea } from '../../model/tarea';
 import { Tareas } from '../../services/tareas';
-import Swal from 'sweetalert2';
-
+import { Api } from '../../services/api';
 
 @Component({
   selector: 'app-agregar',
   standalone: false,
   templateUrl: './agregar.html',
-  styleUrl: './agregar.css',
+  styleUrls: ['./agregar.css'],
 })
 export class Agregar {
   items: string[] = [];
@@ -20,10 +18,21 @@ export class Agregar {
   descripcion?: string;
   item?: string;
   tareas: tarea[] = [];
+  contador = 0;
 
-  constructor(private tareasServicio: Tareas) {
+  constructor(
+    private tareasServicio: Tareas,
+    private apiService: Api,
+  ) {
     // logica
   }
+
+  /* peticionAPI(){
+    this.apiService.getAll().subscribe({
+      ok:(data)=>{},
+      err:(data)=>{}
+    })
+  } */
 
   agregarItem() {
     if (this.item != undefined) {
@@ -35,11 +44,12 @@ export class Agregar {
 
   agregarTarea() {
     /* if(){
-
+      items.length == 0
     } else {
 
     } */
     let tarea: tarea = {
+      id: -1,
       nombre: this.nombre,
       responsable: this.responsable,
       items: this.items,
@@ -48,33 +58,11 @@ export class Agregar {
       descipcion: this.descripcion,
     };
 
-    const nuevaTarea = this.tareasServicio.agregarTarea(tarea)
-
-    if(!nuevaTarea){
-      Swal.fire({
-        title: "Error",
-        text: "Responsable ya existe",
-        icon: "error"
-      });
-    } else{
-      Swal.fire({
-        title: "Good",
-        text: "Tarea agregada correctamente",
-        icon: "success"
-      });
-
-    }
-    this.limpiarFormulario()
-
     // llamar al metodo agregarTarea del servicio
-    
-  }
-  limpiarFormulario(){
-    this.nombre = ""
-    this.responsable = ""
-    this.items = []
-    this.fecha = ""
-    this.prioridad = ""
-    this.descripcion = ""
+    this.tareasServicio.agregarTarea(tarea);
+
+    // limpiar los campos
+    // vaciar el array
+    this.items = [];
   }
 }
